@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SeñaSegura: Sistema inclusivo de alertas multimodales y evacuación en Lengua de Señas Peruana (LSP) para personas con discapacidad auditiva.">
+  <title>SeñaSegura | Evacuación Inclusiva y Alertas en LSP</title>
+  <!-- Tipografía Inter según Guía de Estilos (Sección 4.1.2) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+  <!-- Enlace de salto para lectores de pantalla (WCAG 2.2) -->
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+  <!-- 1. BARRA DE NAVEGACIÓN ADHESIVA -->
+  <header class="navbar" role="banner">
+    <div class="container nav-container">
+      <a href="#" class="brand" aria-label="SeñaSegura Inicio">
+        <div class="brand-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="M9 12l2 2 4-4"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">SeñaSegura</span>
+          <span class="brand-subtitle">OPERACIONES INCLUSIVAS</span>
+        </div>
+      </a>
+
+      <!-- Botón Menú Móvil -->
+      <button type="button" class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Abrir menú de navegación">
+        <span class="hamburger"></span>
+      </button>
+
+      <nav class="nav-menu" id="navMenu" role="navigation" aria-label="Navegación principal">
+        <ul class="nav-links">
+          <li><a href="#problema">Problemática</a></li>
+          <li><a href="#como-funciona">Cómo Funciona</a></li>
+          <li><a href="#segmentos">Segmentos</a></li>
+          <li><a href="#ecosistema">Ecosistema</a></li>
+          <li><a href="#simulador">Simulador</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#piloto">Piloto</a></li>
+        </ul>
+
+        <!-- Controles de Accesibilidad Persistentes (Sección 5.4, 6.2.2 y HU-22) -->
+        <div class="a11y-controls" role="group" aria-label="Controles de accesibilidad visual">
+          <button type="button" id="btnDecreaseFont" class="a11y-btn" title="Reducir tamaño de texto" aria-label="Reducir tamaño de texto">A-</button>
+          <button type="button" id="btnResetFont" class="a11y-btn" title="Restablecer tamaño de texto normal" aria-label="Restablecer tamaño de texto normal">A</button>
+          <button type="button" id="btnIncreaseFont" class="a11y-btn" title="Aumentar tamaño de texto" aria-label="Aumentar tamaño de texto">A+</button>
+          <button type="button" id="btnHighContrast" class="a11y-btn contrast-btn" aria-pressed="false" title="Alternar modo alto contraste">
+            Alto Contraste
+          </button>
+        </div>
+
+        <a href="https://www.figma.com/make/f1VLOn36Nlb5FLX3IcdoeY/Wireframes-para-historias-de-usuario--Copy-?p=f&t=BaUxQDMAgeaonwGf-0&preview-route=%2F%23%2Flogin" target="_blank" rel="noopener noreferrer" class="btn btn-primary nav-cta">
+          Prototipo Figma
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- 2. SECCIÓN HERO DE PROPUESTA DE VALOR -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <span class="badge">WCAG 2.2 AAA • NORMA TÉCNICA A.120 • LSP</span>
+          <h1 id="hero-title">Alertas de emergencia que se sienten y se ven.</h1>
+          <p class="hero-description">
+            Eliminamos la barrera acústica en sismos e incendios. Conectamos a personas con discapacidad auditiva, brigadistas y familias en el <strong>segundo cero</strong> mediante vibración rítmica, destellos visuales y microvideos en <strong>Lengua de Señas Peruana (LSP)</strong>.
+          </p>
+          <div class="hero-actions">
+            <a href="#simulador" class="btn btn-danger btn-lg">
+              Simular Alerta en Vivo
+            </a>
+            <a href="#piloto" class="btn btn-outline btn-lg">
+              Solicitar Piloto Institucional
+            </a>
+          </div>
+          <div class="hero-trust">
+            <span>✓ Arquitectura Offline-First (&lt;35 MB)</span>
+            <span>✓ Respaldo SMS (&lt;140 bytes)</span>
+            <span>✓ Pictogramas ISO 7010 / ISO 3864</span>
+          </div>
+        </div>
+
+        <!-- Visual Mockup Preview -->
+        <div class="hero-visual" aria-hidden="true">
+          <div class="phone-preview">
+            <div class="phone-notch"></div>
+            <div class="phone-screen-preview">
+              <div class="preview-alert-banner">
+                <span>⚠️ EMERGENCIA SÍSMICA • PISO 3</span>
+                <strong>EVACUAR AL PATIO</strong>
+              </div>
+              <div class="preview-lsp-box">
+                <div class="lsp-avatar-pulse">🤟</div>
+                <span class="lsp-tag">SEÑANTE LSP • BUCLE 3s</span>
+                <p>"SALGA POR LA RUTA VERDE"</p>
+              </div>
+              <div class="preview-status-pills">
+                <span class="pill-green">Vibración: ACTIVA</span>
+                <span class="pill-yellow">Flash LED: 1 Hz</span>
+              </div>
+              <div class="preview-btn-safe">✓ ESTOY A SALVO</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. PROBLEMÁTICA E IMPACTO CUANTIFICADO + COMPARADOR DE EVACUACIÓN -->
+    <section id="problema" class="section section-alt" aria-labelledby="problema-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">EL PROBLEMA REAL • EVIDENCIA EMPÍRICA</span>
+          <h2 id="problema-title">Las sirenas tradicionales excluyen a quienes no pueden oírlas</h2>
+          <p>En el Perú, la infraestructura de emergencias está diseñada bajo un enfoque 100% oyente-céntrico, generando vulnerabilidad crítica en desastres urbanos.</p>
+        </div>
+
+        <div class="stats-grid">
+          <article class="stat-card">
+            <div class="stat-number text-danger">+500,000</div>
+            <h3>Personas afectadas en Perú</h3>
+            <p>Ciudadanos con discapacidad auditiva (INEI) quedan sin alerta temprana al depender exclusivamente de alarmas sonoras.</p>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-number text-warning">45 - 60s</div>
+            <h3>Tiempo crítico perdido</h3>
+            <p>Retraso promedio en la detección del peligro al depender de observar a otras personas correr en pánico.</p>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-number text-success">3x más rápido</div>
+            <h3>Comprensión en LSP</h3>
+            <p>Nuestros experimentos demostraron que las instrucciones en Lengua de Señas y pictogramas reducen la carga cognitiva frente al texto técnico.</p>
+          </article>
+        </div>
+
+        <!-- Comparador Interactivo de Tiempos de Evacuación y Barrido (As-Is vs. To-Be) -->
+        <div class="impact-comparator" aria-labelledby="comparator-title">
+          <div class="comparator-header">
+            <span class="badge">MÉTRICAS VALIDADAS • CAPÍTULO II Y III</span>
+            <h3 id="comparator-title">Comparador de Tiempos de Evacuación y Barrido de Brigadistas</h3>
+            <p>Ajusta los parámetros de la edificación para estimar el ahorro operativo al reemplazar alarmas sonoras convencionales (As-Is) por SeñaSegura (To-Be).</p>
+          </div>
+
+          <div class="comparator-grid">
+            <div class="comparator-inputs">
+              <div class="form-group">
+                <label for="buildingType">Tipo de edificación urbana</label>
+                <select id="buildingType" class="form-control">
+                  <option value="corporativo">Edificio Corporativo / Clínica (5 pisos)</option>
+                  <option value="universidad">Pabellón Universitario / Colegio (4 pisos)</option>
+                  <option value="galeria">Galería Comercial / Centro de Atención (3 pisos)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="floorCount">Número de pisos inspeccionados: <strong id="floorCountVal">5 pisos</strong></label>
+                <input type="range" id="floorCount" min="2" max="12" value="5" class="range-input">
+              </div>
+
+              <div class="form-group">
+                <label for="occupantCount">Ocupantes con discapacidad auditiva / movilidad reducida: <strong id="occupantCountVal">6 personas</strong></label>
+                <input type="range" id="occupantCount" min="1" max="25" value="6" class="range-input">
+              </div>
+            </div>
+
+            <div class="comparator-results" aria-live="polite">
+              <div class="metric-row">
+                <div class="metric-top">
+                  <span>Detección inicial de la alerta (-95% desfase)</span>
+                  <strong class="text-success" id="compDetectionSaving">De 52 s a &lt; 3 s</strong>
+                </div>
+                <div class="bar-track">
+                  <div class="bar-fill bar-asis" style="width: 100%;">As-Is: 52 s</div>
+                </div>
+                <div class="bar-track">
+                  <div class="bar-fill bar-tobe" style="width: 6%;">To-Be: &lt;3 s</div>
+                </div>
+              </div>
+
+              <div class="metric-row">
+                <div class="metric-top">
+                  <span>Tiempo de barrido e inspección de brigadistas (-60%)</span>
+                  <strong class="text-success" id="compSweepSaving">Ahorro de 10.8 min críticos</strong>
+                </div>
+                <div class="bar-track">
+                  <div class="bar-fill bar-asis" id="barSweepAsIs" style="width: 100%;">Sin SeñaSegura: 18.0 min</div>
+                </div>
+                <div class="bar-track">
+                  <div class="bar-fill bar-tobe" id="barSweepToBe" style="width: 40%;">Con SeñaSegura: 7.2 min</div>
+                </div>
+              </div>
+
+              <div class="comparator-summary-box">
+                <p id="compSummaryText">
+                  En una edificación de <strong>5 pisos</strong> con <strong>6 ocupantes vulnerables</strong>, la confirmación 1-Tap reduce el barrido manual a ciegas de <strong>18.0 min</strong> a <strong>7.2 min</strong> y elimina el retraso de 52 segundos en el segundo cero.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. CÓMO FUNCIONA (FLUJO OPERATIVO EN 3 FASES) -->
+    <section id="como-funciona" class="section" aria-labelledby="workflow-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">FLUJO OPERATIVO CONTINUO</span>
+          <h2 id="workflow-title">Cómo funciona SeñaSegura en 3 fases críticas</h2>
+          <p>Diseñado para operar incluso ante cortes de energía eléctrica y saturación total de redes telefónicas 4G/5G.</p>
+        </div>
+
+        <div class="steps-grid">
+          <article class="step-card">
+            <span class="step-number">01 • ANTES</span>
+            <h3>Prevención y Precarga Offline-First</h3>
+            <p>Al ingresar al edificio mediante baliza BLE o QR, la app almacena en caché local (&lt;35 MB) los planos vectoriales SVG, rutas con rampas y cápsulas en LSP, vinculando los contactos familiares de emergencia.</p>
+          </article>
+
+          <article class="step-card">
+            <span class="step-number">02 • DURANTE</span>
+            <h3>Alerta Segundo Cero y Guiado LSP</h3>
+            <p>Ante un sismo o activación de sensor de humo, el teléfono dispara vibración rítmica exclusiva, destello visual a 1 Hz y un microvideo en bucle de 3 segundos en LSP con flechas verdes hacia la salida accesible.</p>
+          </article>
+
+          <article class="step-card">
+            <span class="step-number">03 • DESPUÉS</span>
+            <h3>Confirmación 1-Tap y Cierre Certificado</h3>
+            <p>Al llegar al punto de reunión, el usuario presiona "Estoy a salvo". El sistema envía un SMS ultraligero (&lt;140 bytes) a su familia y actualiza en tiempo real el tablero de control de los brigadistas.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. SEGMENTOS OBJETIVO CONECTADOS -->
+    <section id="segmentos" class="section section-alt" aria-labelledby="segmentos-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">DISEÑO CENTRADO EN LAS PERSONAS • ISO 9241-210</span>
+          <h2 id="segmentos-title">Tres perfiles conectados en una misma respuesta</h2>
+          <p>Cada componente responde a hallazgos empíricos validados en entrevistas y pruebas con usuarios reales.</p>
+        </div>
+
+        <div class="stats-grid">
+          <article class="stat-card">
+            <span class="segment-pill pill-brand">SEGMENTO 1</span>
+            <h3>Personas Sordas Usuarias de LSP</h3>
+            <p>Jóvenes y adultos (18–59 años) cuya lengua materna es la Lengua de Señas Peruana. Reciben alertas táctiles/lumínicas autónomas e instrucciones visuales en 3 segundos sin párrafos técnicos.</p>
+          </article>
+
+          <article class="stat-card">
+            <span class="segment-pill pill-warning">SEGMENTO 2</span>
+            <h3>Adultos Mayores y Movilidad Reducida</h3>
+            <p>Personas con hipoacusia o dificultades motrices. Cuentan con botonera ergonómica (&gt;80x80 dp) en zona del pulgar, filtro anti-rebote para temblor, alto contraste 21:1 y rutas priorizando rampas.</p>
+          </article>
+
+          <article class="stat-card">
+            <span class="segment-pill pill-success">SEGMENTO 3</span>
+            <h3>Brigadistas y Redes Familiares</h3>
+            <p>Personal de seguridad que visualiza ocupantes pendientes en un plano táctico sin barridos a ciegas, y familiares que reciben confirmación automática por SMS sin colapsar llamadas.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. ECOSISTEMA DUAL INTERACTIVO (Tabs con soporte ArrowLeft / ArrowRight) -->
+    <section id="ecosistema" class="section" aria-labelledby="ecosistema-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">SOLUCIÓN INTEGRAL • 30 HU CORE</span>
+          <h2 id="ecosistema-title">Un ecosistema conectado para salvar vidas</h2>
+          <p>Alterna entre la aplicación móvil del evacuante y la consola web de monitoreo táctico para brigadistas.</p>
+        </div>
+
+        <div class="tabs-wrapper">
+          <div class="tab-buttons" role="tablist" aria-label="Componentes del ecosistema SeñaSegura">
+            <button type="button" class="tab-btn active" role="tab" aria-selected="true" aria-controls="panel-mobile" id="tab-mobile" tabindex="0">
+              📱 App Móvil (Usuarios Sordos y Adultos Mayores)
+            </button>
+            <button type="button" class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-web" id="tab-web" tabindex="-1">
+              🖥️ Centro de Mando Web (Brigadistas y Seguridad)
+            </button>
+          </div>
+
+          <!-- Panel 1: App Móvil -->
+          <div class="tab-panel active" id="panel-mobile" role="tabpanel" aria-labelledby="tab-mobile">
+            <div class="features-grid">
+              <div class="feature-card">
+                <div class="feature-icon bg-danger">📳</div>
+                <h3>Alerta Multisensorial (Segundo 0)</h3>
+                <p>Patrón vibratorio rítmico continuo (onda cuadrada) y destellos estroboscópicos en pantalla que anulan el modo silencio o descanso (HU-02, HU-09, HU-19).</p>
+              </div>
+              <div class="feature-card">
+                <div class="feature-icon bg-brand">🤟</div>
+                <h3>Microvideos en LSP y Pictogramas</h3>
+                <p>Cápsulas de 3 segundos en bucle en Lengua de Señas Peruana con simbología ISO 7010 y cero párrafos de texto confuso (HU-04, HU-16, HU-44).</p>
+              </div>
+              <div class="feature-card">
+                <div class="feature-icon bg-success">👆</div>
+                <h3>Botonera Ergonómica (1-Tap)</h3>
+                <p>Botones gigantes (&gt;80x80 dp) en la zona natural del pulgar con filtro anti-rebote (debounce 1500 ms) para manos con temblor motriz (HU-10, HU-15).</p>
+              </div>
+              <div class="feature-card">
+                <div class="feature-icon bg-warning">📡</div>
+                <h3>Offline-First y Respaldo SMS</h3>
+                <p>Planos vectoriales y videos precargados en caché local. Si colapsa internet, envía un SMS ligero (&lt;140 bytes) avisando a la familia (HU-13, HU-14, HU-47).</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Panel 2: Dashboard Web -->
+          <div class="tab-panel" id="panel-web" role="tabpanel" aria-labelledby="tab-web" hidden>
+            <div class="features-grid">
+              <div class="feature-card">
+                <div class="feature-icon bg-brand">📍</div>
+                <h3>Radar Digital de Ocupantes</h3>
+                <p>Visualiza en tiempo real qué pisos o stands tienen personas con discapacidad auditiva o movilidad reducida sin evacuar (HU-01, HU-06).</p>
+              </div>
+              <div class="feature-card">
+                <div class="feature-icon bg-danger">🚨</div>
+                <h3>Triage Táctico y Gestión SOS</h3>
+                <p>Prioriza solicitudes de auxilio con ubicación exacta y ficha médica rápida: tipo de hipoacusia, alergias y movilidad (HU-05, HU-20, HU-48).</p>
+              </div>
+              <div class="feature-card">
+                <div class="feature-icon bg-warning">🗺️</div>
+                <h3>Rutas Dinámicas sin Escaleras</h3>
+                <p>Recalcula rutas accesibles en menos de 1 segundo ante bloqueos por humo o caída de vidrios, priorizando rampas (HU-12, HU-21, HU-35).</p>
+              </div>
+              <div class="feature-card">
+                <div class="feature-icon bg-success">📋</div>
+                <h3>Bitácora de Auditoría ITSE</h3>
+                <p>Registro inmutable de tiempos de respuesta y cierre certificado por sector para inspecciones de Defensa Civil (HU-03, HU-08).</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. SIMULADOR INTERACTIVO EN VIVO CON PLANO VECTORIAL SVG DEL PISO 3 -->
+    <section id="simulador" class="section section-alt" aria-labelledby="simulador-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">PRUEBA INTERACTIVA • SINCRONIZACIÓN EN TIEMPO REAL</span>
+          <h2 id="simulador-title">Experimenta cómo funciona SeñaSegura en una crisis</h2>
+          <p>Activa una simulación para probar la respuesta visual en el móvil del usuario, el intérprete LSP y el plano táctico SVG del brigadista en el Piso 3.</p>
+        </div>
+
+        <div class="simulator-container">
+          <!-- Columna 1: Controles de Disparo -->
+          <div class="sim-controls">
+            <h3>1. Panel de Control de Simulación</h3>
+            <p>Selecciona un evento urbano para disparar la alerta multimodal:</p>
+            <div class="sim-trigger-group">
+              <button type="button" id="btnSimSismo" class="btn btn-warning btn-block">
+                🌋 Simular Alerta de Sismo
+              </button>
+              <button type="button" id="btnSimIncendio" class="btn btn-danger btn-block">
+                🔥 Simular Alerta de Incendio (Piso 3)
+              </button>
+              <button type="button" id="btnSimReset" class="btn btn-outline btn-block">
+                ↺ Restablecer Estado Normal
+              </button>
+            </div>
+            <div class="sim-log" aria-live="polite">
+              <strong>Registro del sistema:</strong>
+              <p id="simLogText">Sistema en modo Standby. Esperando activación de prueba...</p>
+            </div>
+          </div>
+
+          <!-- Columna 2: Dispositivo Móvil Simulado -->
+          <div class="sim-device" id="simDevice" role="region" aria-label="Simulador de pantalla móvil SeñaSegura">
+            <div class="device-header">
+              <span>SeñaSegura App</span>
+              <span id="deviceConnection" class="conn-badge">● OFFLINE READY</span>
+            </div>
+
+            <div class="device-body" id="deviceBody">
+              <div class="device-status-icon" id="deviceIcon">🛡️</div>
+              <h4 id="deviceAlertTitle">MODO PROTEGIDO</h4>
+              <p id="deviceAlertMsg">Monitoreo activo de sensores sísmicos y de humo en el edificio.</p>
+
+              <!-- Caja de Interpretación LSP -->
+              <div class="device-lsp-card" id="deviceLspCard" hidden>
+                <span class="lsp-badge">INTÉRPRETE LSP EN BUCLE</span>
+                <div class="lsp-animation" id="lspHandIcon">🤟</div>
+                <strong id="lspInstruction">EVACUAR POR SALIDA B</strong>
+              </div>
+            </div>
+
+            <!-- Botonera Inferior Ergonómica (HU-10 / HU-11 / HU-15) -->
+            <div class="device-actions">
+              <button type="button" id="btnUserSafe" class="sim-action-btn btn-safe" disabled>
+                ✓ ESTOY A SALVO
+              </button>
+              <button type="button" id="btnUserSos" class="sim-action-btn btn-sos" disabled>
+                🆘 NECESITO AUXILIO
+              </button>
+            </div>
+          </div>
+
+          <!-- Columna 3: Centro de Mando del Brigadista con Plano Vectorial SVG Piso 3 -->
+          <div class="sim-dashboard" role="region" aria-label="Vista sincronizada del brigadista">
+            <div class="dash-header">
+              <span>CENTRO DE MANDO • PISO 3</span>
+              <span class="live-dot">EN VIVO</span>
+            </div>
+
+            <!-- Plano Vectorial SVG Dinámico del Piso 3 (PA-02, PA-04, T1) -->
+            <div class="svg-map-wrapper" aria-label="Plano táctico del Piso 3">
+              <svg id="floorPlanSvg" viewBox="0 0 360 190" width="100%" height="auto" role="img" aria-labelledby="svgMapTitle">
+                <title id="svgMapTitle">Plano vectorial esquemático del Piso 3 con rutas accesibles</title>
+                <!-- Estructura base del Piso 3 -->
+                <rect x="6" y="6" width="348" height="178" rx="10" fill="#161616" stroke="#424242" stroke-width="2"/>
+                
+                <!-- Oficina 304 (Ala Oeste) -->
+                <rect x="18" y="20" width="110" height="65" rx="6" fill="#212121" stroke="#555" stroke-width="1.5"/>
+                <text x="73" y="45" fill="#FFFFFF" font-size="10" font-weight="700" text-anchor="middle">OFICINA 304</text>
+                <text x="73" y="59" fill="#B0BEC5" font-size="8.5" text-anchor="middle">Ala Oeste (Valeria)</text>
+                <circle id="svgUserNode" cx="73" cy="73" r="6" fill="#1976D2"/>
+
+                <!-- Ala Este / Zona Sensor Humo -->
+                <rect id="svgEastZone" x="232" y="20" width="110" height="65" rx="6" fill="#212121" stroke="#555" stroke-width="1.5"/>
+                <text x="287" y="45" fill="#FFFFFF" font-size="10" font-weight="700" text-anchor="middle">ALA ESTE</text>
+                <text id="svgSmokeLabel" x="287" y="61" fill="#B0BEC5" font-size="8.5" text-anchor="middle">Sensor Normal</text>
+
+                <!-- Pasadizo Central -->
+                <rect x="18" y="96" width="324" height="32" rx="4" fill="#1B1B1B" stroke="#333" stroke-dasharray="4 3"/>
+                <text x="180" y="115" fill="#90A4AE" font-size="8.5" font-weight="600" text-anchor="middle">PASADIZO CENTRAL DE EVACUACIÓN</text>
+
+                <!-- Escalera A (Bloqueada en Incendio) -->
+                <rect id="svgStairA" x="232" y="138" width="110" height="36" rx="6" fill="#262626" stroke="#555" stroke-width="1.5"/>
+                <text id="svgStairALabel" x="287" y="159" fill="#B0BEC5" font-size="8.5" font-weight="700" text-anchor="middle">ESCALERA A (ESTÁNDAR)</text>
+
+                <!-- Salida B (Rampa Accesible ISO 7010) -->
+                <rect id="svgExitB" x="18" y="138" width="175" height="36" rx="6" fill="#1B3A24" stroke="#2E7D32" stroke-width="2"/>
+                <text x="105" y="159" fill="#81C784" font-size="9" font-weight="800" text-anchor="middle">SALIDA B (RAMPA ACCESIBLE)</text>
+
+                <!-- Ruta Verde Dinámica (Oficina 304 -> Pasadizo -> Salida B) -->
+                <path id="svgSafeRoute" d="M 73 85 L 73 112 L 105 112 L 105 136" fill="none" stroke="#2E7D32" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.35"/>
+              </svg>
+            </div>
+
+            <div class="dash-card">
+              <span class="dash-label">Ocupante Monitoreado:</span>
+              <strong>Valeria Ramos (Sordera Profunda • LSP)</strong>
+              <span class="dash-loc">Ubicación: Oficina 304 - Ala Oeste</span>
+            </div>
+            <div class="dash-status-box" id="dashStatusBox">
+              <span class="dash-label">Estado de Evacuación:</span>
+              <strong id="dashUserStatus" class="status-neutral">Sin emergencia activa</strong>
+              <p id="dashActionHint">El brigadista visualiza el censo preventivo del piso.</p>
+            </div>
+            <div class="dash-family-box" id="dashFamilyBox">
+              <span class="dash-label">Red Familiar (SMS &lt;140 bytes):</span>
+              <p id="dashFamilyStatus">En espera de evento.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. PREGUNTAS FRECUENTES (<details>) Y SOLICITUD DE PILOTO INSTITUCIONAL -->
+    <section id="faq" class="section" aria-labelledby="faq-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">TRANSPARENCIA OPERATIVA Y NORMATIVA</span>
+          <h2 id="faq-title">Preguntas frecuentes</h2>
+          <p>Resolvemos dudas técnicas sobre resiliencia offline, privacidad de datos y cumplimiento normativo en edificaciones.</p>
+        </div>
+
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>¿Funciona SeñaSegura si se corta la luz y caen las redes 4G/5G durante un terremoto?</summary>
+            <p>Sí. Gracias a nuestra arquitectura <strong>Offline-First (HU-13)</strong>, los planos vectoriales SVG del inmueble y las cápsulas de video en Lengua de Señas Peruana (&lt;35 MB) se almacenan localmente en el smartphone. Además, la confirmación de seguridad conmuta automáticamente a una trama <strong>SMS ultraligera (&lt;140 bytes)</strong> que opera incluso con redes de datos congestionadas.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>¿Se rastrea la ubicación del usuario fuera de una emergencia?</summary>
+            <p>No. En estricto cumplimiento de la <strong>Ley N.° 29733 (Ley de Protección de Datos Personales)</strong>, la telemetría por balizas Bluetooth Low Energy (BLE) permanece desactivada en modo cotidiano y solo se habilita tras la activación oficial de una alerta sísmica o de incendio en la edificación.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>¿Qué normativas peruanas e internacionales cumple la plataforma?</summary>
+            <p>SeñaSegura materializa la <strong>Norma Técnica A.120</strong> (RM N.° 075-2023-VIVIENDA) sobre accesibilidad universal en edificaciones, la <strong>Ley N.° 29535</strong> de reconocimiento oficial de la Lengua de Señas Peruana, los estándares de señalización <strong>ISO 7010 / ISO 3864</strong> y las pautas <strong>WCAG 2.2 Nivel AAA</strong>.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>¿Cómo ayuda a adultos mayores o personas con temblor en las manos?</summary>
+            <p>La interfaz concentra botones táctiles gigantes (&gt;80x80 dp) en el tercio inferior de la pantalla (zona natural del pulgar), incorpora un algoritmo anti-rebote (<em>debounce</em> de 1500 ms) para evitar pulsaciones accidentales y prioriza rutas con rampas excluyendo escaleras congestionadas.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMULARIO ACCESIBLE DE SOLICITUD DE PILOTO INSTITUCIONAL -->
+    <section id="piloto" class="section section-alt" aria-labelledby="piloto-title">
+      <div class="container">
+        <div class="pilot-wrapper">
+          <div class="pilot-info">
+            <span class="section-tag">IMPLEMENTACIÓN INSTITUCIONAL</span>
+            <h2 id="piloto-title">Solicita un piloto para tu institución</h2>
+            <p>Implementa SeñaSegura en campus universitarios, clínicas, municipalidades, edificios corporativos o galerías comerciales.</p>
+            <ul class="pilot-benefits">
+              <li>✓ Mapeo vectorial SVG de pisos y rutas accesibles sin escaleras</li>
+              <li>✓ Consola de monitoreo táctico en tiempo real para brigadistas</li>
+              <li>✓ Reporte auditable de tiempos de evacuación para inspecciones ITSE</li>
+            </ul>
+          </div>
+
+          <form id="pilotForm" class="pilot-form" novalidate aria-labelledby="piloto-title">
+            <div class="form-group">
+              <label for="pilotName">Nombre completo del responsable *</label>
+              <input type="text" id="pilotName" name="pilotName" class="form-control" placeholder="Ej. Ing. María Torres" required aria-required="true" aria-describedby="err-pilotName">
+              <span class="error-msg" id="err-pilotName" role="alert"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="pilotOrg">Institución, clínica o empresa *</label>
+              <input type="text" id="pilotOrg" name="pilotOrg" class="form-control" placeholder="Ej. Universidad / Clínica San Miguel" required aria-required="true" aria-describedby="err-pilotOrg">
+              <span class="error-msg" id="err-pilotOrg" role="alert"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="pilotEmail">Correo electrónico institucional *</label>
+              <input type="email" id="pilotEmail" name="pilotEmail" class="form-control" placeholder="responsable@institucion.edu.pe" required aria-required="true" aria-describedby="err-pilotEmail">
+              <span class="error-msg" id="err-pilotEmail" role="alert"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="pilotSector">Tipo de infraestructura</label>
+              <select id="pilotSector" name="pilotSector" class="form-control">
+                <option value="educacion">Institución Educativa / Universidad</option>
+                <option value="salud">Clínica / Centro de Salud</option>
+                <option value="corporativo">Edificio Corporativo / Oficina</option>
+                <option value="comercial">Galería Comercial / Municipalidad</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block btn-lg">
+              Enviar Solicitud de Piloto
+            </button>
+
+            <div id="pilotSuccessMsg" class="pilot-success" role="status" aria-live="polite" hidden></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN EQUIPO (Capítulo I - Startup Profile) -->
+    <section id="equipo" class="section" aria-labelledby="equipo-title">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">STARTUP PROFILE • UPC</span>
+          <h2 id="equipo-title">Equipo detrás de SeñaSegura</h2>
+          <p>Estudiantes de Ingeniería de Software e Ingeniería de Sistemas de Información — Curso 1ASI0784: HCI for UX Design.</p>
+        </div>
+
+        <div class="team-grid">
+          <article class="team-card">
+            <div class="team-avatar">JV</div>
+            <h3>Jhan Jhon Villegas Escobar</h3>
+            <span class="team-role">Product Manager &amp; UX Researcher</span>
+            <p>Metodologías ágiles (Lean UX/Scrum), investigación con usuarios y arquitectura de información.</p>
+          </article>
+
+          <article class="team-card">
+            <div class="team-avatar">FC</div>
+            <h3>Fabian Gustavo Coya Zapata</h3>
+            <span class="team-role">Solution &amp; Lead UX/UI Designer</span>
+            <p>Accesibilidad universal WCAG 2.2 AAA, prototipado en Figma y diseño inclusivo para LSP.</p>
+          </article>
+
+          <article class="team-card">
+            <div class="team-avatar">AC</div>
+            <h3>Anderson Calixto Hipolo</h3>
+            <span class="team-role">Business Analyst &amp; Domain Modeler</span>
+            <p>Análisis de procesos, benchmarking competitivo y viabilidad operativa con brigadistas.</p>
+          </article>
+
+          <article class="team-card">
+            <div class="team-avatar">BL</div>
+            <h3>Bryan Sebastián Luna Ramírez</h3>
+            <span class="team-role">Systems Architect &amp; Requirements</span>
+            <p>Ingeniería de requerimientos, User Journey Mapping, flujos sistémicos y arquitectura Offline-First.</p>
+          </article>
+
+          <article class="team-card">
+            <div class="team-avatar">JA</div>
+            <h3>John Astoquillca Jacobe</h3>
+            <span class="team-role">UX Evaluator &amp; QA Specialist</span>
+            <p>Evaluación heurística, validación de usabilidad (SUS) y verificación normativa de accesibilidad.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer-grid">
+      <div>
+        <strong class="footer-brand">SeñaSegura</strong>
+        <p>Tecnología inclusiva para la gestión de emergencias urbanas y evacuación autónoma en Lengua de Señas Peruana.</p>
+      </div>
+      <div>
+        <h4>Estándares Aplicados</h4>
+        <ul>
+          <li>Norma Técnica A.120 (RM N.° 075-2023-VIVIENDA)</li>
+          <li>Pautas de Accesibilidad WCAG 2.2 Nivel AAA</li>
+          <li>Señalización Internacional ISO 7010 / ISO 3864</li>
+          <li>Ley N.° 29535 (Lengua de Señas Peruana)</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Proyecto Académico</h4>
+        <p>Universidad Peruana de Ciencias Aplicadas (UPC)<br>1ASI0784 - HCI for UX Design • Ciclo 2026-2</p>
+        <a href="https://www.figma.com/make/f1VLOn36Nlb5FLX3IcdoeY/Wireframes-para-historias-de-usuario--Copy-?p=f&t=BaUxQDMAgeaonwGf-0&preview-route=%2F%23%2Flogin" target="_blank" rel="noopener noreferrer" class="footer-link">Ver Prototipo Interactivo en Figma →</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 SeñaSegura. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="./js/main.js"></script>
+</body>
+</html>
